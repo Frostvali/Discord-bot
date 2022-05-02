@@ -8,12 +8,23 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const commands = [djsbuilder.SlashCommandBuilder(). setName ('ping').setDescription('Replies with pong!'),
+const commands = [
+    new 
+djsbuilder.SlashCommandBuilder(). setName ('ping').setDescription('Replies with pong!'),
+     new
+djsbuilder.SlashCommandBuilder(). setName ('server').setDescription('Replies with server info!'),
     new
-djsbuilder.SlashCommandBuilder(). setName ('server').setDescription('Replies with user info!'),
+djsbuilder.SlashCommandBuilder(). setName ('user').setDescription ('Replies with user info!'), 
 ]
     .map(command =>
         command.toJSON());
 
         const rest = new 
-        djsrest
+        djsrest.REST({ version:'9' }).setToken(process.env.TOKEN); 
+        
+        rest.put(djsapi.Routes.applicationGuildCommands (process.env.CLIENTID,
+            process.env.GUILDID),
+        { body:commands }) 
+            .then(() =>
+        console.log('successfully registered application commands. '))
+            .catch(console.error);
