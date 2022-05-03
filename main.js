@@ -22,9 +22,10 @@ client.on('interactionCreate', async interaction => {
 		await interaction.reply(`Server name: ${interaction.guild.name}\nTotal members: ${interaction.guild.memberCount}`);
 	} else if (commandName === 'user') {
 		await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
-	}
-});
-
+	} else if (commandName === 'cute') {
+	 	await interaction.reply(`${interaction.user.tag}\nis adowable`);
+	} 
+}); 
 // Login to Discord with your client's token
 client.login(process.env.TOKEN); 
 

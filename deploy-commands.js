@@ -14,7 +14,9 @@ djsbuilder.SlashCommandBuilder(). setName ('ping').setDescription('Replies with 
      new
 djsbuilder.SlashCommandBuilder(). setName ('server').setDescription('Replies with server info!'),
     new
-djsbuilder.SlashCommandBuilder(). setName ('user').setDescription ('Replies with user info!'), 
+djsbuilder.SlashCommandBuilder(). setName ('user').setDescription ('Replies with user info!'),
+    new
+djsbuilder.SlashCommandBuilder(). setName ('cute').setDescription ('calls the user cute')
 ]
     .map(command =>
         command.toJSON());
